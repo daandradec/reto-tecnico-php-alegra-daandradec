@@ -2,7 +2,7 @@
     "private": true,
     "type": "module",
     "scripts": {
-        "dev": "vite",
+        "dev": "vite --host",
         "build": "vite build"        
     },
     "devDependencies": {
@@ -13,6 +13,7 @@
     "dependencies": {
         "@vitejs/plugin-react": "^4.0.1",
         "react": "^18.2.0",
-        "react-dom": "^18.2.0"
+        "react-dom": "^18.2.0",
+        "so": "^1.0.1"
     }
 }
