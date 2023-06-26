@@ -2,10 +2,13 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class StockBuyed extends Model
 {
+    use HasFactory;
+    
     /* TABLA ASOCIADA */
     protected $table = 'stock_amount_buyed';
     

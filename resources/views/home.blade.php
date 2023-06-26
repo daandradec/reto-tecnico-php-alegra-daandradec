@@ -39,7 +39,7 @@
     <script>
         /* VARIABLE CONTADORA QUE SE SETTEA CON EL CONTENIDO DEL TOTAL DE ORDENES CREADAS Y SI NO EXISTE ENTONCES 1 */
         var count = @json($count) ?? 1        
-        const HOST_API = "{{env('VITE_API_URL','/restaurante-aleatorio/public/api')}}"                
+        const HOST_API = "{{ config('app.api_url')}}"                
 
         /* CUANDO SE HAGA CLICK EN EL BOTON */
         document.getElementById("mostrarTostadas").addEventListener("click", function() {

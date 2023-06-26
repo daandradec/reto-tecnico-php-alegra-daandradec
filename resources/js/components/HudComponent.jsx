@@ -49,7 +49,7 @@ function HUDWaiting(){
     )
 }
 /* PANEL DE UI QUE MUESTRA LA ORDEN ACTUAL SELECCIONADA Y UNA OPCION PARA COMENZAR A DESPACHARLA */
-function HUDStart({current, setState, ingredients, closeCurrent}){  
+const HUDStart = React.memo(({current, setState, ingredients, closeCurrent}) => {  
     
     /* FUNCION PARA COMENZAR EL COCINADO SI DISPONE DE INGREDIENTES, SINO ENTONCES VAYA AL HUD DE COMPRA */
     const startCooking = () => {                
@@ -72,9 +72,9 @@ function HUDStart({current, setState, ingredients, closeCurrent}){
             </div>
         </div>
     )
-}
+})
 
-function HUDBuying({current, buyStock, setState}){    
+const HUDBuying = React.memo(({current, buyStock, setState}) => {    
     /* EFECTO QUE AL MONTAR EL COMPONENTE COMPRA STOCK CON LOS INGREDIENTES DE LA ORDEN SELECCIONADA Y AVANZA SI ES EXITOSO */
     useEffect(() => {
         buyStock(current.food.ingredients).then(() => {setState(3)})
@@ -90,10 +90,10 @@ function HUDBuying({current, buyStock, setState}){
             </div>
         </div>
     )
-}
+})
 
 /* COMPONENTE DE COCINADO Y DESPACHO DE ORDENES */
-function HUDCooking({current, updateOrder, closeCurrent}){
+const HUDCooking = React.memo(({current, updateOrder, closeCurrent}) => {
     
     /* EFECTO QUE ACTUALIZARA EL DESPACHO DE LA ORDEN SELECCIONADA Y REDUCIR EN 1 LA CANTIDAD DE INGREDIENTES UTILIZADOS */
     useEffect(() => {        
@@ -114,6 +114,6 @@ function HUDCooking({current, updateOrder, closeCurrent}){
             </div>
         </div>
     )
-}
+})
 
-export default HudComponent
+export default React.memo(HudComponent)
