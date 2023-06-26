@@ -19,3 +19,18 @@
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
 </IfModule>
+
+<IfModule mod_expires.c>
+  ExpiresActive on
+  ExpiresDefault                          "access plus 0 seconds"
+
+  # Media: images, video, audio
+  ExpiresByType audio/ogg                 "access plus 5 minutes"
+  ExpiresByType image/gif                 "access plus 5 minutes"
+  ExpiresByType image/jpeg                "access plus 5 minutes"
+  ExpiresByType image/jpg                "access plus 5 minutes"
+  ExpiresByType image/png                 "access plus 5 minutes"
+  ExpiresByType video/mp4                 "access plus 5 minutes"
+  ExpiresByType video/ogg                 "access plus 5 minutes"
+  ExpiresByType video/webm                "access plus 5 minutes"
+</IfModule>
