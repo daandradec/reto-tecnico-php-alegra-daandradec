@@ -21,8 +21,9 @@ class OrderControllerAPI extends Controller
 
     /* ALMACENAR UNA ORDEN MEDIANTE LA RELACION CON UN FOOD ALEATORIO */
     public function storeOrders(Request $request){
-        Food::find(rand(1, $this->max))->orders()->create(['order_delivered' => false]);
-        return response()->noContent();
+        $id = rand(1, $this->max);
+        Food::find($id)->orders()->create(['order_delivered' => false]);
+        return $id;
     }    
 
     /* ACTUALIZAR UNA ORDEN EN SU ESTADO DE ENTREGADO Y LA CANTIDAD DE INGREDIENTES DISMINUIDO EN 1 */
@@ -31,7 +32,7 @@ class OrderControllerAPI extends Controller
         $ingredients = $request->input('ingredients');
         foreach($ingredients as $ingredientParam){
             $ingredient = Ingredient::find($ingredientParam['id']);
-            $ingredient->ingredient_amount -= 1;
+            $ingredient->ingredient_amount = max(0, $ingredient->ingredient_amount - 1);
             $ingredient->save();
         }
         return response()->json($order);

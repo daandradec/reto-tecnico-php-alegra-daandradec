@@ -2,12 +2,15 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
 
 /* MODELO DE FACTURAS DE STOCK */
 class StockReceipt extends Model
 {
+    use HasFactory;
+    
     /* TABLA ASOCIADA */
     protected $table = 'stock_receipts';
 
